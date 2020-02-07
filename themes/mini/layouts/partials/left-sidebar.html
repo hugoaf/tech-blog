@@ -1,0 +1,28 @@
+{{ $currentPage := . }}
+<nav class="container mt-5">
+    <ul class="left-nav">
+        <li>
+            <a href="{{ .Site.BaseURL }}">Home</a>
+        </li>
+        {{ range .Site.Sections }}
+            <li itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting">
+                <a href="{{ .Permalink }}" itemprop="url" title="Go to post detail" class=" {{ if eq $currentPage.Permalink .Permalink }} active {{end}}" >
+                    {{ .Title }}
+                </a>
+                <!-- if current belongs to same section, show section posts-->
+                {{ if eq $currentPage.Section .Section }} 
+                <ul class="d-none d-sm-block">
+                    {{range .Pages.ByTitle }}
+                    <li>
+                        <a href="{{ .Permalink }}" itemprop="url" title="Go to post detail" class=" {{ if eq $currentPage.Permalink .Permalink }} active {{end}}">
+                            {{ .Title }}
+                            </a>
+                    </li>
+
+                    {{ end}}
+                </ul>
+                {{ end }}
+            </li>
+        {{ end }}
+    </ul>
+</nav>

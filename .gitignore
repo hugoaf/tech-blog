@@ -1,0 +1,16 @@
+# Hugo default output directory
+/public
+/resources
+
+# Unused folders
+/themes/ghostwriter
+/content/post
+/content/page
+/data/
+/static/
+
+# OSX
+.DS_Store
+
+# Node
+/node_modules

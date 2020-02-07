@@ -1,0 +1,45 @@
+baseurl = "/"
+title = "Tech Blog"
+theme = "mini"
+
+DefaultContentLanguage = "es"
+
+[Params]
+    mainSections = ["tcpip"]
+    intro = true
+    headline = "TCPIP & Cisco"
+    description = "Information and procedures"
+    github = "https://github.com/hugoaf"
+    twitter = "https://twitter.com/hugoaf"
+    email = "hugoaf@yahoo.com"
+    opengraph = false
+    shareTwitter = false
+    dateFormat = "Mon, Jan 2, 2006"
+
+
+[Permalinks]
+    post = "/:sections/:slug/"
+
+
+[languages]
+  [languages.es]
+    title = "Blog de Tecnología"
+    languageName = "Español"
+    languageNameShort = "es"
+    languageFlag = "🇲🇽"
+    weight = 1
+    [languages.es.params]
+      headline = "TCPIP, Cisco, Programación, Telecomunicaciones."
+      description = "Información y procedimientos"
+      linkedin = "https://github.com/hugoaf"
+      [languages.es.params.navigation]
+        help = "Ayuda"
+  [languages.en]
+    title = "Tech Blog"
+    languageName = "English"
+    languageNameShort = "en"
+    languageFlag= "🇺🇸"
+    weight = 2
+    [languages.en.params]
+      linkedin = "https://github.com/hugoaf"
+      headline = "TCPIP, Cisco, Codding, Telecomm."
