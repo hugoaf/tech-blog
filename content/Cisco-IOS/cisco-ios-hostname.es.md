@@ -19,4 +19,17 @@ FitstFloorSw(config)#
 
 ```
 
-Siempre es conveniente que el nombre indique la ubicación del dispositivo y proyecto (Notar que es sensible a mayusculas), un buen nombre podria ser: `ACME-SecondFloor-SW5-ABC2019`
+
+
+## Reqerimientos
+
+* Las condiciones del nombre como caracteres aceptados y longitud varían de acuerdo al dispositivo.
+* Generalmente el nombre debe iniciar con una letra y puede contener numeros y algunos caracteres especiales como `-` y `_`. En algunos dispositivos debe iniciar y terminar en una letra.
+* La longitud maxima varia dependiendo el dispositivo, para SW Catalist el maximo es de 20 caracteres.
+* Algunos caracteres especiales no son aceptados como ´? *,´\ !"#$%&/()= ´ o espacios en blanco.
+
+## Recomendaciones
+
+* Debido a que el hostname se utiliza en la red para identificar el dispositivo por medio de DNS inverso, es recoemndable que el hostname cumpla con las reglas de establecimiento de nombres FQDN (Fully Qualified Doamin Name). Ver [RFC-1034](https://www.rfc-es.org/rfc/rfc1034-es.txt).
+
+* Siempre es conveniente que el nombre indique la ubicación y el número del dispositivo (Notar que es sensible a mayusculas en el Prompt, pero no necesariamente para identificar el dispositivo en la red, ya que para ello se utilizarán solo minusculas), un buen nombre podria ser: `ACME_2NDF_5`
