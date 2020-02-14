@@ -3,6 +3,19 @@ pre {
     padding: 1rem;
     border: solid 1px #dddddd;
 }
+h2 {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 100;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+
+}
 ul {
    padding-left: 1rem;
 }
@@ -25,6 +38,7 @@ li {
 
 .left-nav {
     font-size: 1rem;
+    padding-left: 0;
 }
 .left-nav ul {
     padding-left: 6px;
@@ -89,4 +103,29 @@ li {
 .right-nav li {
     list-style-type: none;
     margin-bottom: 0.3rem;
+}
+
+.right-nav ul li ul {
+    padding-left: 5px;
+}
+table {
+    min-width: 50%;
+    margin: 0 auto;
+}
+
+table td {
+    padding: 0.25rem 0.5rem;
+    border: solid 1px #DDDDDD;
+}
+table th {
+    padding:0.25rem 0.5rem;
+    border: solid 1px #DDDDDD;
+    color: #888888;
+}
+.article {
+    margin-bottom: 2rem;
+}
+
+ul.post-list li{
+    list-style:  none;
 }

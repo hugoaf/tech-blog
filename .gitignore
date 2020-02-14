@@ -4,6 +4,7 @@
 
 # Unused folders
 /themes/ghostwriter
+/themes/learn
 /content/post
 /content/page
 /data/
@@ -14,3 +15,6 @@
 
 # Node
 /node_modules
+
+# Editor
+.vscode

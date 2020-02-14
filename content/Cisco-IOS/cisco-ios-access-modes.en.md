@@ -1,9 +1,10 @@
-+++
-title = "Cisco CLI Access modes and prompts"
-description = "What are the different prompts of Cisco IOS"
-date = 2020-01-09T19:00:00Z
-author = "Hugo Avila"
-+++
+---
+title: "Cisco CLI Access modes"
+description: ""
+date: 2020-01-09T19:00:00Z
+author: "Hugo Avila"
+url: "/cisco-ios/access-modes/"
+---
 
 
 ## User mode (EXEC)

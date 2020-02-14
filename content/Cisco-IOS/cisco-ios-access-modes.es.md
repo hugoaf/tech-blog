@@ -1,20 +1,21 @@
 +++
-title = "Modos de acceso a Cisco IOS y prompts"
-description = "What are the different prompts of Cisco IOS"
+title = "Modos de Acceso a Cisco IOS"
+description = ""
 date = 2020-01-09T19:00:00Z
 author = "Hugo Avila"
+url = "/cisco-ios/modos-de-acceso/"
 +++
 
 
 ## Modo Usuario (EXEC)
 
-El modo usuario da acceso solo a comandos basicos de monitoreo. El dispositivo entrará automaticamente en este modo cuando termina el booteo.
+El modo usuario da acceso solo a comandos básicos de monitoreo. El dispositivo entrará automáticamente en este modo cuando termina el inicio.
 
 ```
   Router>
 ```
 
-> Nota: si el usuario logeado tiene el nivel de privilegios correspondiente, puede entrar directamente al modo de Usuario Privilegiado, sin pasar por el modo de usuario. Ver [Usuarios Cisco IOS](/cisco-ios-usuarios)
+> Nota: si el usuario tiene el nivel de privilegios correspondiente, puede entrar directamente al modo de Usuario Privilegiado, sin pasar por el modo de usuario. Ver [Usuarios Cisco IOS](/cisco-ios-usuarios)
 
 
 ## Modo de Usuario Privilegiado
@@ -33,7 +34,7 @@ El modo privilegiado puede estar protegido con contraseña.
 
 ## Modo de Configuración Global
 
-El modo de Configuración Global permite el acceso a parametros de configuración del dispositivo, son comandos que afectarán todo el sistema, como cambiar el `running-config`.
+El modo de Configuración Global permite el acceso a parámetros de configuración del dispositivo, son comandos que afectarán todo el sistema, como cambiar el `running-config`.
 
 Entrar al modo de configuración global escribiendo:
 
@@ -46,7 +47,7 @@ Salir de este modo escribiendo `exit` o `Ctr+Z`
 
 ## Modos de Configuración Específica
 
-El modo de configuración específica permite el acceso a sub-comandos, correpondientes a procesos o interfaces específicas. A continuación un ejemplo de como entrar a configurar la `interface`, `router`, `line` y `access-list`.
+El modo de configuración específica permite el acceso a sub-comandos, correspondientes a procesos o interfaces específicas. A continuación un ejemplo de como entrar a configurar la `interface`, `router`, `line` y `access-list`.
 
 ```
 Router(config)# interface GigabitEthernet 0/1
@@ -66,7 +67,7 @@ Router(config-std-nacl)#
 * `(config-line)` se utiliza para configurar los password de modo usuario. 
 * `(config-std-nacl)` se utiliza para configurar las listas de acceso.
 
-> Nota: Si `router rip` arroja un error como: `IP routing not enabled`, entonces este debe ser activado previamente con `#(config)ip routing`.
+> Nota: Si `router rip` arroja un error como: `IP routing not enabled`, entonces debe ser activado previamente con `#(config)ip routing`.
 
 
 
@@ -78,4 +79,4 @@ El modo Setup se utiliza para configurar el dispositivo (generalmente de inicio)
 Router:
 ```
 
-En algunos dispositivos se puede forzar el modo Setup presionando el boton *Setup* durante el booteo.
+En algunos dispositivos se puede forzar el modo Setup presionando el botón *Setup* durante el inicio.
