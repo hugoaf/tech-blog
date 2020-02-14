@@ -8,11 +8,13 @@ author = "Hugo Avila"
 ## Requerimientos 
 
 **Cable Serial**
+
 * DB-9 a RJ45.
 * USB Mini-B a USB-A.
 
 
 **Software emulador de Terminal**
+
 * [Putty](https://www.putty.org/) (Recomendado)
 * Hyperterminal _(Pre-instalado en Windows)_
 
