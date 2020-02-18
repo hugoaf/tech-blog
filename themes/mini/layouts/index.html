@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ block "title" . }} {{ .Page.Title }} - {{ .Site.Title }}  {{ end }}</title>
+        <!-- Bootstrap 4.0 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        <!-- Optional theme -->
+
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/styles.css" content-type="text/plain">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2 left-side">
+          {{ block "sidebar" . }}{{ partial "left-sidebar.html" . }}{{ end }}
+        </div>
+        <div class="article col-sm-8">
+          {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
+          <!--{{ block "breadcrumbs" . }}{{ partial "breadcrumbs.html" . }}{{end}}-->
+
+          {{ block "main" . }}{{ end }}
+          {{ block "footer" . }}{{ end }}
+
+          <div>
+              <label>Search</label><input type="text" name="searchTerm" id="searchTerm">
+              <button id="search">Search</button>
+        </div>
+            <div><ul id="text-results"></ul></div>
+        </div>
+        
+        <div class="col-sm-2 right-side">
+          {{ block "right-sidebar" . }}{{ partial "right-sidebar.html" . }}{{ end }}
+        </div>
+      </div>
+    </div>
+    <script>
+        let posts = [];
+        fetch('http://localhost:1313/index.xml')
+        .then(response => response.text())
+        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+        .then(data => {
+          let items =  data.getElementsByTagName("item");
+          for (let index = 0; index < items.length; index++) {
+            let post = {};
+            post.title = items[index].children[0].innerHTML;
+            post.link = items[index].children[1].innerHTML;
+            post.desc = items[index].children[4].innerHTML;
+            posts.push(post);
+          }
+        });
+
+        document.getElementById("search").addEventListener("click", function(){
+            let term = document.getElementById("searchTerm").value.toLowerCase();
+            //terms = term.split(" ");
+            let results = [];
+            /*
+            for (let index = 0; index < terms.length; index++) {
+                posts.map(post=>{
+                    let title_and_desc = post.title + post.desc;
+                    if (title_and_desc.toLowerCase().includes(term[index])) {
+                        if(results.includes(post)){
+                            results.push(post);
+                        }
+                       
+                    } ;
+                })
+            }
+            */
+            posts.map(post=>{
+                let title_and_desc = post.title + post.desc;
+               if (title_and_desc.toLowerCase().includes(term)) {
+                results.push(post);
+               } ;
+            })
+            
+            console.log(results);
+            document.getElementById("text-results").innerHTML = "";
+
+            if(results.length===0) {
+                document.getElementById("text-results").innerHTML = "<p> Sorry, Nothing found! </p>";
+            }
+
+            for (let index = 0; index < results.length; index++) {
+                let li = document.createElement("LI");
+                let a = document.createElement('a');
+                a.href = results[index].link;
+                let title = document.createTextNode(results[index].title);         
+                a.appendChild(title);
+                li.appendChild(a);
+                document.getElementById("text-results").appendChild(li);
+            }
+
+        })
+      </script>
+</body>
+</html>
