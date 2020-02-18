@@ -1,64 +1,62 @@
 pre {
-    background-color: #f2f2f2;
-    padding: 1rem;
-    border: solid 1px #dddddd;
+  background-color: #f2f2f2;
+  padding: 1rem;
+  border: solid 1px #dddddd;
 }
 h2 {
-    font-size: 2.5rem;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    font-weight: 100;
+  font-size: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 100;
 }
 
 h3 {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 ul {
-   padding-left: 1rem;
+  padding-left: 1rem;
 }
 li {
-    margin: 0;
+  margin: 0;
 }
 
 .title {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
-.post-list
-    li {
-        margin-bottom: 30px;
-    }
+.post-list li {
+  margin-bottom: 30px;
+}
 
 .left-side {
-    border-right: dotted 1px #dddddd;
+  border-right: dotted 1px #dddddd;
 }
 
 .left-nav {
-    font-size: 1rem;
-    padding-left: 0;
+  font-size: 1rem;
+  padding-left: 0;
 }
 .left-nav ul {
-    padding-left: 6px;
-    border-left: solid 3px #dddddd;
-    margin-left:6px;
+  padding-left: 6px;
+  border-left: solid 3px #dddddd;
+  margin-left: 6px;
 }
 .left-nav li {
-    line-height: 1.5rem;
-    margin-bottom: 0.3rem;
-    list-style-type: none;
+  line-height: 1.5rem;
+  margin-bottom: 0.3rem;
+  list-style-type: none;
 }
 .left-nav ul li {
-    line-height: 1rem;
-    margin-bottom: 0.3rem;
-    position: relative;
-    list-style-type: none;
+  line-height: 1rem;
+  margin-bottom: 0.3rem;
+  position: relative;
+  list-style-type: none;
 }
 .left-nav ul li a {
-    font-size: 0.8rem;
-    color: #888888;
+  font-size: 0.8rem;
+  color: #888888;
 }
 /*
 .left-nav li a.active::before x {
@@ -75,57 +73,61 @@ li {
     left: 0;
   }
 */
-.left-nav ul li::before   {
-    content: "\2212";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-    position: absolute;
-    color: #dddddd; /* Change the color */
-    font-weight: bold; /* If you want it to be bold */
-    display: inline-block; /* Needed to add space between the bullet and the text */
-    width: 0.5rem; /* Also needed for space (tweak if needed) */
-    font-size: 1.5rem;
-    top: 0px;
-    left: -16px;
-    /*transform: rotate(45deg);*/
-  }
+.left-nav ul li::before {
+  content: "\2212"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  position: absolute;
+  color: #dddddd; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 0.5rem; /* Also needed for space (tweak if needed) */
+  font-size: 1.5rem;
+  top: 0px;
+  left: -16px;
+  /*transform: rotate(45deg);*/
+}
 .left-nav .active {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .right-nav {
-    position: fixed;
-    width: auto;
-    font-size: 0.9rem;
-    border-left: dotted 1px #dddddd;
+  position: fixed;
+  width: auto;
+  font-size: 0.9rem;
+  border-left: dotted 1px #dddddd;
 }
 .right-nav ul {
-    padding-left: 0;
+  padding-left: 0;
 }
 .right-nav li {
-    list-style-type: none;
-    margin-bottom: 0.3rem;
+  list-style-type: none;
+  margin-bottom: 0.3rem;
 }
 
 .right-nav ul li ul {
-    padding-left: 5px;
+  padding-left: 5px;
 }
 table {
-    min-width: 50%;
-    margin: 0 auto;
+  min-width: 50%;
+  margin: 0 auto;
 }
 
 table td {
-    padding: 0.25rem 0.5rem;
-    border: solid 1px #DDDDDD;
+  padding: 0.25rem 0.5rem;
+  border: solid 1px #dddddd;
 }
 table th {
-    padding:0.25rem 0.5rem;
-    border: solid 1px #DDDDDD;
-    color: #888888;
+  padding: 0.25rem 0.5rem;
+  border: solid 1px #dddddd;
+  color: #888888;
 }
 .article {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
-ul.post-list li{
-    list-style:  none;
+ul.post-list li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
 }
