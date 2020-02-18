@@ -1,5 +1,5 @@
 ---
-title: "Authorize Hosted Accept.js"
+title: "PHP Para Forma Authorize Hosted"
 description: "Código reducido en PHP para implementar forma de pago en línea con Authorize"
 date: 2020-02-14T17:25:00Z
 author: "Hugo Avila"
