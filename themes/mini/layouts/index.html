@@ -35,7 +35,7 @@
     </div>
     <script>
         let posts = [];
-        fetch('http://localhost:1313/index.xml')
+        fetch("{{ .Site.BaseURL }}" + "index.xml")
         .then(response => response.text())
         .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
         .then(data => {
