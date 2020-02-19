@@ -3,10 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.BaseURL }}apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.BaseURL }}favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.BaseURL }}favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <title>{{ block "title" . }} {{ .Page.Title }} - {{ .Site.Title }}  {{ end }}</title>
-        <!-- Bootstrap 4.0 -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/styles.css" content-type="text/plain">
+    <!-- Bootstrap 4.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/styles.css" content-type="text/plain">
   </head>
   <body>
     <div class="container-fluid">
