@@ -21,11 +21,16 @@
           {{ block "main" . }}{{ end }}
           {{ block "footer" . }}{{ end }}
 
+          <form id="search-form" class="form">
+            <div class="form-group">
+              <label for="searchTerm" ></label>
+              <input type="text" class="form-control-lg" name="searchTerm" id="searchTerm">
+              <button class="btn mb-2" id="search-button">Search</button>
+            </div>
+          </form>
           <div>
-              <label>Search</label><input type="text" name="searchTerm" id="searchTerm">
-              <button id="search">Search</button>
-        </div>
-            <div><ul id="text-results"></ul></div>
+            <ul id="results-list"></ul>
+          </div>
         </div>
         
         <div class="col-sm-2 right-side">
@@ -33,7 +38,10 @@
         </div>
       </div>
     </div>
+
     <script>
+      (()=>{
+
         let posts = [];
         fetch("{{ .Site.BaseURL }}" + "index.xml")
         .then(response => response.text())
@@ -49,48 +57,73 @@
           }
         });
 
-        document.getElementById("search").addEventListener("click", function(){
+        document.getElementById("search-form").addEventListener("submit", function(event){
+          event.preventDefault();
+          search();
+        });
+
+        let search = () => {
             let term = document.getElementById("searchTerm").value.toLowerCase();
-            //terms = term.split(" ");
-            let results = [];
-            /*
-            for (let index = 0; index < terms.length; index++) {
-                posts.map(post=>{
-                    let title_and_desc = post.title + post.desc;
-                    if (title_and_desc.toLowerCase().includes(term[index])) {
-                        if(results.includes(post)){
-                            results.push(post);
-                        }
-                       
-                    } ;
-                })
+            let resultsList = document.getElementById("results-list");
+
+            if ( term.length < 2){
+              resultsList.innerHTML = "<p> Please Add a term to search. </p>";
+              return;
             }
-            */
+
+            terms = term.split(" ");
+            let results = [];
+
             posts.map(post=>{
-                let title_and_desc = post.title + post.desc;
-               if (title_and_desc.toLowerCase().includes(term)) {
+              post.finds = 0;
+              for (let index = 0; index < terms.length; index++) {
+                if(post.title.toLowerCase().includes(terms[index])){
+                  post.finds +=5;
+                }
+                /*
+                if(post.desc.toLowerCase().includes(terms[index])){
+                  post.finds +=2;
+                }
+                */
+                post.finds +=(post.desc.toLowerCase().match(new RegExp(terms[index], 'gi')) || []).length;
+              }
+              if ( post.finds > 0 ) {
                 results.push(post);
-               } ;
+              }
             })
             
-            console.log(results);
-            document.getElementById("text-results").innerHTML = "";
+            //console.log(results);
+            resultsList.innerHTML = "";
 
             if(results.length===0) {
-                document.getElementById("text-results").innerHTML = "<p> Sorry, Nothing found! </p>";
+              resultsList.innerHTML = "<p> Sorry, Nothing found! </p>";
             }
+
+            // sort by finds 
+            results.sort((a,b)=>{
+              if( a.finds > b.finds ) return -1;
+              if( a.finds < b.finds ) return 1;
+            });
+            console.log(results);
 
             for (let index = 0; index < results.length; index++) {
-                let li = document.createElement("LI");
+                let li = document.createElement("li");
                 let a = document.createElement('a');
                 a.href = results[index].link;
+                let p  = document.createElement('p');
                 let title = document.createTextNode(results[index].title);         
+                let desc = document.createTextNode(results[index].desc); 
+                p.appendChild(desc);        
                 a.appendChild(title);
                 li.appendChild(a);
-                document.getElementById("text-results").appendChild(li);
+                li.appendChild(p);
+                resultsList.appendChild(li);
             }
+        }
 
-        })
+      })();
+
+
       </script>
 </body>
 </html>
