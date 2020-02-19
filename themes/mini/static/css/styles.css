@@ -32,11 +32,19 @@ li {
 
 .left-side {
   border-right: dotted 1px #dddddd;
+  padding: 0;
 }
 
+
+
 .left-nav {
+  position: static;
   font-size: 1rem;
   padding-left: 0;
+  display: flex;flex-direction: column;
+}
+.left-nav.navbar-nav {
+  flex-direction: column !important;
 }
 .left-nav ul {
   padding-left: 6px;
@@ -58,32 +66,17 @@ li {
   font-size: 0.8rem;
   color: #888888;
 }
-/*
-.left-nav li a.active::before x {
-    content: "\02E5";  
-    color: #dddddd; 
-    font-weight: bold;
-    font-size: 2rem;
-    line-height: 0.6rem;
-    display: inline-block;
-    width: 0.5rem;
-    margin-left: -0.2rem; 
-    position: relative;
-    top: 0.5rem;
-    left: 0;
-  }
-*/
+
 .left-nav ul li::before {
-  content: "\2212"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  content: "\2212"; 
   position: absolute;
-  color: #dddddd; /* Change the color */
-  font-weight: bold; /* If you want it to be bold */
-  display: inline-block; /* Needed to add space between the bullet and the text */
-  width: 0.5rem; /* Also needed for space (tweak if needed) */
+  color: #dddddd; 
+  font-weight: bold; 
+  display: inline-block; 
+  width: 0.5rem; 
   font-size: 1.5rem;
   top: 0px;
   left: -16px;
-  /*transform: rotate(45deg);*/
 }
 .left-nav .active {
   font-weight: bold;
@@ -130,4 +123,8 @@ ul.post-list li {
 
 img {
   max-width: 100%;
+}
+
+.language-selector {
+
 }

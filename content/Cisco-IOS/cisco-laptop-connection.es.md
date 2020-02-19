@@ -1,9 +1,13 @@
-+++
-title = "Conexión a Equipo Cisco"
-description = "Como conectarse a equipo Cisco"
-date = 2020-02-12T18:40:00Z
-author = "Hugo Avila"
-+++
+---
+title: "Conexión a Equipo Cisco por Consola"
+description: "Como conectarse localmente al puerto de consola de equipo Cisco"
+date: 2020-02-12T18:40:00Z
+author: "Hugo Avila"
+---
+
+## Introducción 
+
+Este procedimiento describe la forma de conectarse localmente a equipo Cisco como un router o un switch en el puerto de consola utilizando una computadora un cable serial o USB.
 
 ## Requerimientos 
 

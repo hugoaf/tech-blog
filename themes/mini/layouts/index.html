@@ -1,35 +1,30 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>{{ block "title" . }} {{ .Page.Title }} - {{ .Site.Title }}  {{ end }}</title>
-        <!-- Bootstrap 4.0 -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        <!-- Optional theme -->
-
-        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/styles.css" content-type="text/plain">
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-2 left-side">
-          {{ block "sidebar" . }}{{ partial "left-sidebar.html" . }}{{ end }}
-        </div>
-        <div class="article col-sm-8">
-          {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
-          <!--{{ block "breadcrumbs" . }}{{ partial "breadcrumbs.html" . }}{{end}}-->
-
-          {{ block "main" . }}{{ end }}
-          {{ block "footer" . }}{{ end }}
-
-
-        </div>
-        
-        <div class="col-sm-2 right-side">
-          {{ block "right-sidebar" . }}{{ partial "right-sidebar.html" . }}{{ end }}
-        </div>
-      </div>
+{{ define "header"}}
+<header>
+    <div class="container">
+        <h1 class="display-3 text-center title">{{ $.Site.Title | title }}</h1>
+        <p class="text-center description">{{ $.Site.Params.description }}</p>
+        <hr>
     </div>
+</header>
+{{ end }}
 
-
-</body>
-</html>
+{{ define "main"}}
+    <div class="container">
+        <ul class="post-list">
+            {{ range first 10 .Site.RegularPages.ByPublishDate.Reverse }}
+            {{ if ne .Section "page" }}
+                <li itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting">
+                    <a href="{{ .Permalink }}" itemprop="url" title="Go to post detail">
+                        <h4 class="list-title" itemprop="name">{{ .Title }}</h4>
+                    </a>
+                    <p class="description">{{ .Description }}</p>
+                    <time class="list-date" datetime="{{ .Date.Format "2006-01-02" }}"> {{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) .Date }}</time>
+                    {{ with .Params.featured }}
+                        <span class="post-stub-tag">Featured</span>
+                    {{ end }}
+                </li>
+            {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+{{ end }}

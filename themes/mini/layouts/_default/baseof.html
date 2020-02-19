@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }} {{ .Page.Title }} - {{ .Site.Title }}  {{ end }}</title>
         <!-- Bootstrap 4.0 -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        <!-- Optional theme -->
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ .Site.BaseURL }}css/styles.css" content-type="text/plain">
   </head>
   <body>
@@ -27,6 +26,11 @@
         </div>
       </div>
     </div>
+    <script>
+      document.querySelector(".navbar-toggler").addEventListener("click", function(){
+        document.getElementById("navbarNav").classList.toggle("collapse")
+      })
+    </script>
     {{ block "script" . }}{{ end }}
   </body>
 </html>

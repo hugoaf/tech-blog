@@ -24,13 +24,13 @@ DefaultContentLanguage = "es"
 [languages]
   [languages.es]
     title = "Blog de Tecnología"
+
     languageName = "Español"
     languageNameShort = "es"
     languageFlag = "🇲🇽"
     weight = 1
     [languages.es.params]
-      headline = "TCPIP, Cisco, Programación, Telecomunicaciones."
-      description = "Información y procedimientos"
+      description = "Información, Procedimientos, Recetas y mas sobre tecnología de Telecomunicaciones y Programación."
       linkedin = "https://github.com/hugoaf"
       [languages.es.params.navigation]
         help = "Ayuda"

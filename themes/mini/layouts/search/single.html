@@ -41,7 +41,7 @@
           let resultsList = document.getElementById("results-list");
 
           if ( term.length < 2){
-            resultsList.innerHTML = "<p> Please Add a term to search. </p>";
+            resultsList.innerHTML = "<p> Please add a term to search. </p>";
             return;
           }
 
@@ -70,7 +70,7 @@
           resultsList.innerHTML = "";
 
           if(results.length===0) {
-            resultsList.innerHTML = "<p> Sorry, Nothing found! </p>";
+            resultsList.innerHTML = "<p> Sorry, nothing found! </p>";
           }
 
           // sort by finds 
@@ -85,8 +85,8 @@
               let a = document.createElement('a');
               a.href = results[index].link;
               let p  = document.createElement('p');
-              let title = document.createTextNode(results[index].title);         
-              let desc = document.createTextNode(results[index].desc); 
+              let title = document.createTextNode(results[index].title );         
+              let desc = document.createTextNode(results[index].desc + ' ['+ results[index].finds + ']'); 
               p.appendChild(desc);        
               a.appendChild(title);
               li.appendChild(a);
