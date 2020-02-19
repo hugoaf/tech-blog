@@ -21,16 +21,7 @@
           {{ block "main" . }}{{ end }}
           {{ block "footer" . }}{{ end }}
 
-          <form id="search-form" class="form">
-            <div class="form-group">
-              <label for="searchTerm" ></label>
-              <input type="text" class="form-control-lg" name="searchTerm" id="searchTerm">
-              <button class="btn mb-2" id="search-button">Search</button>
-            </div>
-          </form>
-          <div>
-            <ul id="results-list"></ul>
-          </div>
+
         </div>
         
         <div class="col-sm-2 right-side">
@@ -39,91 +30,6 @@
       </div>
     </div>
 
-    <script>
-      (()=>{
 
-        let posts = [];
-        fetch("{{ .Site.BaseURL }}" + "index.xml")
-        .then(response => response.text())
-        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-        .then(data => {
-          let items =  data.getElementsByTagName("item");
-          for (let index = 0; index < items.length; index++) {
-            let post = {};
-            post.title = items[index].children[0].innerHTML;
-            post.link = items[index].children[1].innerHTML;
-            post.desc = items[index].children[4].innerHTML;
-            posts.push(post);
-          }
-        });
-
-        document.getElementById("search-form").addEventListener("submit", function(event){
-          event.preventDefault();
-          search();
-        });
-
-        let search = () => {
-            let term = document.getElementById("searchTerm").value.toLowerCase();
-            let resultsList = document.getElementById("results-list");
-
-            if ( term.length < 2){
-              resultsList.innerHTML = "<p> Please Add a term to search. </p>";
-              return;
-            }
-
-            terms = term.split(" ");
-            let results = [];
-
-            posts.map(post=>{
-              post.finds = 0;
-              for (let index = 0; index < terms.length; index++) {
-                if(post.title.toLowerCase().includes(terms[index])){
-                  post.finds +=5;
-                }
-                /*
-                if(post.desc.toLowerCase().includes(terms[index])){
-                  post.finds +=2;
-                }
-                */
-                post.finds +=(post.desc.toLowerCase().match(new RegExp(terms[index], 'gi')) || []).length;
-              }
-              if ( post.finds > 0 ) {
-                results.push(post);
-              }
-            })
-            
-            //console.log(results);
-            resultsList.innerHTML = "";
-
-            if(results.length===0) {
-              resultsList.innerHTML = "<p> Sorry, Nothing found! </p>";
-            }
-
-            // sort by finds 
-            results.sort((a,b)=>{
-              if( a.finds > b.finds ) return -1;
-              if( a.finds < b.finds ) return 1;
-            });
-            console.log(results);
-
-            for (let index = 0; index < results.length; index++) {
-                let li = document.createElement("li");
-                let a = document.createElement('a');
-                a.href = results[index].link;
-                let p  = document.createElement('p');
-                let title = document.createTextNode(results[index].title);         
-                let desc = document.createTextNode(results[index].desc); 
-                p.appendChild(desc);        
-                a.appendChild(title);
-                li.appendChild(a);
-                li.appendChild(p);
-                resultsList.appendChild(li);
-            }
-        }
-
-      })();
-
-
-      </script>
 </body>
 </html>
