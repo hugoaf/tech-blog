@@ -36,13 +36,21 @@ li {
 }
 
 
-
 .left-nav {
   position: static;
   font-size: 1rem;
   padding-left: 0;
   display: flex;flex-direction: column;
 }
+
+.navbar-light .navbar-toggler {
+  border:none;
+}
+a.nav-home, a.nav-search {
+  color: #888888;
+  font-size: 1.5rem;
+}
+
 .left-nav.navbar-nav {
   flex-direction: column !important;
 }
@@ -75,7 +83,7 @@ li {
   display: inline-block; 
   width: 0.5rem; 
   font-size: 1.5rem;
-  top: 0px;
+  top: 5px;
   left: -16px;
 }
 .left-nav .active {
@@ -123,4 +131,14 @@ ul.post-list li {
 
 img {
   max-width: 100%;
+}
+
+.logo{
+  text-align: center;
+  color: #888888;
+  font-weight: bold;
+  padding-top: 0.5rem;
+  height: 3rem;
+  border-bottom: dotted 1px #f2f2f2;
+  width: 100%;
 }

@@ -1,10 +1,12 @@
 {{ $currentPage := . }}
-<nav class="navbar navbar-expand-xs  navbar-light bg-light collapse bd-links">
+<nav class="navbar navbar-expand-xs navbar-light collapse">
+    <div class="logo">Hugo techBlog</div>   
+
+    <a class="nav-link nav-home" href="{{ .Site.BaseURL }}">&#127968;</a>
+    <a class="nav-link nav-search" href="{{ .Site.BaseURL }}buscar">&#128270;</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="nav-link" style="font-size: 1.5rem;" href="{{ .Site.BaseURL }}buscar">&#128270;</a>
-    <a class="nav-link" style="font-size: 1.5rem;" href="{{ .Site.BaseURL }}">&#127968;</a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="left-nav navbar-nav ">   
             {{ range .Site.Sections }}
@@ -50,3 +52,4 @@
     </div>
 
 </nav>
+
