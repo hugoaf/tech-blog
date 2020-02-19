@@ -16,7 +16,7 @@
 {{ define "script" }}
 <script>
     (()=>{
-        document.addEventListener("DOMContentLoaded", function(event) {
+        window.addEventListener('load', function(event) {
             let posts = [];
             fetch("{{ .Site.BaseURL }}" + "index.xml")
             .then(response => response.text())
