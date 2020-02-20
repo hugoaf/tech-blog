@@ -1,0 +1,13 @@
+<footer class="row">
+    <div class="col-4 text-center">
+        <p class="">{{ .Site.Params.credits }}</p>
+    </div>
+    <div class="col-4 text-center">
+        <a href="{{ .Site.Params.github }}">GitHub</a>
+    </div>
+    <div class="col-4 text-center">
+    {{ if .IsPage }}
+        <a href="{{ .Site.Params.githubEditContentPath }}/{{ .File.Path }}">Edit this Page</a> 
+    {{ end }}
+    </div>
+</footer>

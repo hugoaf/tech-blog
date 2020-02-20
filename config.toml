@@ -2,6 +2,7 @@ baseurl = "/"
 title = "Tech Blog"
 theme = "mini"
 
+
 DefaultContentLanguage = "es"
 
 [Params]
@@ -9,13 +10,14 @@ DefaultContentLanguage = "es"
     intro = true
     headline = "TCPIP & Cisco"
     description = "Information and procedures"
-    github = "https://github.com/hugoaf"
-    twitter = "https://twitter.com/hugoaf"
-    email = "hugoaf@yahoo.com"
     opengraph = false
     shareTwitter = false
     dateFormat = "Mon, Jan 2, 2006"
-
+    github = "https://github.com/hugoaf/tech-blog"
+    githubEditContentPath = "https://github.com/hugoaf/tech-blog/edit/master/content"
+    twitter = "https://twitter.com/hugoaf"
+    email = "hugoaf@yahoo.com"
+    credits = "by Hugo Avila"
 
 [Permalinks]
     post = "/:sections/:slug/"

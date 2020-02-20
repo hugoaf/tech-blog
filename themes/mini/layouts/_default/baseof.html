@@ -14,23 +14,33 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row">
+      <div class="row main-row">
         <div class="col-sm-2 left-side">
           {{ block "sidebar" . }}{{ partial "left-sidebar.html" . }}{{ end }}
         </div>
-        <div class="main col-sm-8">
+        <div class='main {{ block "main-col-class" .  }}col-sm-8{{ end }}'>
           {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
           <!--{{ block "breadcrumbs" . }}{{ partial "breadcrumbs.html" . }}{{end}}-->
 
           {{ block "main" . }}{{ end }}
-          {{ block "footer" . }}{{ end }}
+          {{ block "article-footer" . }}{{ end }}
         </div>
         
+        {{ block "right-sidebar" . }}
         <div class="col-sm-2 right-side">
-          {{ block "right-sidebar" . }}{{ partial "right-sidebar.html" . }}{{ end }}
+          {{ partial "right-sidebar.html" . }}
         </div>
+        {{ end }}
+      </div>
+      <div class="row footer bg-light">
+        {{ block "footer" . }}
+        <div class="container footer-content">
+          {{ partial "footer.html" . }}
+        </div>
+        {{ end }}
       </div>
     </div>
+
     <script>
       document.querySelector(".navbar-toggler").addEventListener("click", function(){
         document.getElementById("navbarNav").classList.toggle("collapse");
