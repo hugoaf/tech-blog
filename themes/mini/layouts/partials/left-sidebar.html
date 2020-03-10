@@ -1,55 +1,15 @@
-{{ $currentPage := . }}
-<nav class="navbar navbar-expand-xs navbar-light collapse">
-    <div class="logo">Hugo techBlog</div>   
-
-    <a class="nav-link nav-home" href="{{ .Site.BaseURL }}">&#127968;</a>
-    <a class="nav-link nav-search" href="{{ .Site.BaseURL }}buscar">&#128270;</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="left-nav navbar-nav ">   
-            {{ range .Site.Sections }}
-            {{ if ne .Section "page" }}
-
-                <li class="nav-item" itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting">
-                    <a class="nav-link" href="{{ .Permalink }}" itemprop="url" title="Go to post detail" class=" {{ if eq $currentPage.Permalink .Permalink }} active {{end}}" >
-                        {{ .Title }}
-                    </a>
-                    <!-- if current belongs to same section, show section posts-->
-                    {{ if eq $currentPage.Section .Section }} 
-                    <ul class="d-none d-sm-block">
-                        {{range .Pages.ByTitle }}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ .Permalink }}" itemprop="url" title="Go to post detail" class=" {{ if eq $currentPage.Permalink .Permalink }} active {{end}}">
-                                {{ .Title }}
-                                </a>
-                        </li>
-
-                        {{ end}}
-                    </ul>
-                    {{ end }}
-                </li>
-            {{ end }}
-            {{ end }}
-            <li class="nav-item">
-                {{ $siteLanguages := site.Languages}}
-                {{ $pageLang := .Page.Lang}}
-                {{- range .Page.AllTranslations }}
-                    {{ $translation := . }}
-                    {{- range sort $siteLanguages "Weight" "asc" }}
-                        {{- if eq $translation.Lang .Lang }}
-                            {{ if eq $pageLang .Lang}}
-                                <a class="flagselect" href="{{ $translation.Permalink | relURL }}">{{ .Params.languageNameShort }}{{ .Params.languageFlag }}</a>
-                            {{ else }}
-                                <a class="flagnoselect" href="{{ $translation.Permalink | relURL }}">{{ .Params.languageNameShort }}{{ .Params.languageFlag }}</a>
-                            {{ end }}
-                        {{- end }}
-                    {{- end }}
-                {{- end }}
-            </li>
-        </ul>
+<div class="sidebar-fixed" >
+    <div id="main-nav">
+        <div class="logo">Hugo techBlog</div>   
+        <a class="nav-link nav-home" href="{{ .Site.BaseURL }}">&#127968;</a>
+        <a class="nav-link nav-search" href="{{ .Site.BaseURL }}buscar">&#128270;</a>
+        <a class="nav-link navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">&#9776;</a>
     </div>
 
-</nav>
+    {{ partial "content-navigation.html" . }}
 
+    <aside id="table-of-contents-wrapper">
+        {{ .TableOfContents }}
+    </aside>
+
+</div>

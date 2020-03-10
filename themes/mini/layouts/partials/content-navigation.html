@@ -1,0 +1,49 @@
+{{ $currentPage := . }}
+<nav id="content-navigation" class="hide">
+
+    <div id="navbarNav">
+        <ul class="left-nav navbar-nav ">   
+            {{ range .Site.Sections }}
+            {{ if ne .Section "page" }}
+
+                <li class="nav-item" itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting">
+                    <a class="nav-link" href="{{ .Permalink }}" itemprop="url" title="Go to post detail" class=" {{ if eq $currentPage.Permalink .Permalink }} active {{end}}" >
+                        {{ .Title }}
+                    </a>
+                    <!-- if current belongs to same section, show section posts-->
+                    {{ if eq $currentPage.Section .Section }} 
+                    <ul class="d-none d-sm-block">
+                        {{range .Pages.ByTitle }}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ .Permalink }}" itemprop="url" title="Go to post detail" class=" {{ if eq $currentPage.Permalink .Permalink }} active {{end}}">
+                                {{ .Title }}
+                                </a>
+                        </li>
+
+                        {{ end}}
+                    </ul>
+                    {{ end }}
+                </li>
+            {{ end }}
+            {{ end }}
+            <li class="nav-item">
+                {{ $siteLanguages := site.Languages}}
+                {{ $pageLang := .Page.Lang}}
+                {{- range .Page.AllTranslations }}
+                    {{ $translation := . }}
+                    {{- range sort $siteLanguages "Weight" "asc" }}
+                        {{- if eq $translation.Lang .Lang }}
+                            {{ if eq $pageLang .Lang}}
+                                <a class="flagselect" href="{{ $translation.Permalink | relURL }}">{{ .Params.languageNameShort }}{{ .Params.languageFlag }}</a>
+                            {{ else }}
+                                <a class="flagnoselect" href="{{ $translation.Permalink | relURL }}">{{ .Params.languageNameShort }}{{ .Params.languageFlag }}</a>
+                            {{ end }}
+                        {{- end }}
+                    {{- end }}
+                {{- end }}
+            </li>
+        </ul>
+    </div>
+
+</nav>
+

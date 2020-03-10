@@ -120,7 +120,9 @@ $xmlStr = <<<XML
         </setting>
         <setting>
             <settingName>hostedPaymentPaymentOptions</settingName>
-            <settingValue>{"cardCodeRequired": true, "showCreditCard": true, "showBankAccount": false}</settingValue>
+            <settingValue>
+                {"cardCodeRequired": true, "showCreditCard": true, "showBankAccount": false}
+            </settingValue>
         </setting>
         <setting>
             <settingName>hostedPaymentButtonOptions</settingName>
@@ -147,7 +149,13 @@ $xml->transactionRequest->order->addChild('invoiceNumber', $product_data['invoic
 $xml->transactionRequest->order->addChild('description', $product_data['description']);
 
 // Add return options
-$retUrl = json_encode(array("showReceipt" => false, 'url' => thisPageURL() . "?return", "urlText" => "Continue", "cancelUrl" => thisPageURL() . "?cancel", "cancelUrlText" => "Cancel"), JSON_UNESCAPED_SLASHES);
+$retUrl = json_encode(array(
+    "showReceipt" => false, 
+    'url' => thisPageURL() . "?return", 
+    "urlText" => "Continue", 
+    "cancelUrl" => thisPageURL() . "?cancel", 
+    "cancelUrlText" => "Cancel"), JSON_UNESCAPED_SLASHES
+    );
 $xml->hostedPaymentSettings->setting[0]->addChild('settingValue', $retUrl);
 
 // uncomment to see final XML
@@ -164,7 +172,8 @@ function thisPageURL()
     }
     $pageURL .= "://";
     if ($_SERVER["SERVER_PORT"] != "80") {
-        $pageURL .= $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
+        $pageURL .= 
+        $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
     } else {
         $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
     }
@@ -206,7 +215,9 @@ try {
     $hostedPaymentResponse = new SimpleXMLElement($content);
     curl_close($ch);
 } catch (Exception $e) {
-    trigger_error(sprintf('Curl failed with error #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
+    trigger_error(
+        sprintf('Curl failed with error #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR
+    );
 }
 
 // If error, show. Remove this in production
