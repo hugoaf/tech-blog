@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400|Muli:300&display=swap');
+/* VARS */
+:root {
+  --left-width: 300px;
+  --container-width: 100%;
+}
+
 /* INITIALING */
 html, body, div, span,  object, iframe, table, caption, tbody, tfoot, thead, tr, th, td, 
 del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, 
@@ -27,7 +33,7 @@ hr {
 
 #container {
   display: grid;
-  max-width:1000px;
+  max-width:var(--container-width);
   margin: 0 auto;
 }
 
@@ -40,7 +46,7 @@ hr {
 }
 
 #left {
-  flex: 0 0 200px;
+  flex: 0 0 var(--left-width);
   padding: 1rem;
 
 }
@@ -62,7 +68,7 @@ hr {
 /* SIDEBAR */
 .sidebar-fixed {
   position: fixed;
-  max-width: 200px;
+  max-width: var(--left-width);
   font-size: 0.9rem;
 }
 
@@ -70,7 +76,7 @@ hr {
   font-size: 0.9rem;
 }
 #main-nav {
-  width: 200px;
+  width: var(--left-width);
   text-align: center;
   margin-top: 1rem; 
   margin-bottom:2rem;
@@ -141,6 +147,9 @@ hr {
     position: initial;
     max-width: 100%;
   }
+  #table-of-contents-wrapper {
+    display: none;
+  }
 
 }
 
@@ -154,6 +163,7 @@ hr {
 .bg-light {
   background-color: #DEDEDE;
 }
+
 /* TEXT FORMAT */
 body {
   font-family: "Montserrat";
@@ -195,9 +205,6 @@ p {
 #main li {
   list-style-type: disc;
 }
-#main a {
-}
-
 
 
 /* POST LIST */
