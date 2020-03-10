@@ -1,10 +1,10 @@
 {{ define "main"}}
-    <div class="container">
+    <div class="list-container">
         <ul class="post-list">
             {{ range .Pages }}
                 <li itemprop="blogPost" itemscope="" itemtype="https://schema.org/BlogPosting">
-                    <a href="{{ .Permalink }}" itemprop="url" title="Go to post detail">
-                        <h4 class="list-title" itemprop="name">{{ .Title }}</h4>
+                    <a class="list-title" href="{{ .Permalink }}" itemprop="url" title="Go to post detail">
+                        <span itemprop="name">{{ .Title }}</span>
                     </a>
                     <p class="description">{{ .Description }}</p>
                     <time class="list-date" datetime="{{ .Date.Format "2006-01-02" }}"> {{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) .Date }}</time>
@@ -16,4 +16,4 @@
         </ul>
     </div>
 {{ end }}
-{{ define "main-col-class"}}col-sm-10{{ end }}
+{{ define "right-sidebar"}} &nbsp; {{end}}

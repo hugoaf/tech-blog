@@ -8,42 +8,47 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.BaseURL }}favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <title>{{ block "title" . }} {{ .Page.Title }} - {{ .Site.Title }}  {{ end }}</title>
-    <!-- Bootstrap 4.0 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/styles.css" content-type="text/plain">
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row main-row">
-        <div class="col-sm-2 left-side">
-          {{ block "sidebar" . }}{{ partial "left-sidebar.html" . }}{{ end }}
-        </div>
-        <div class='main {{ block "main-col-class" .  }}col-sm-8{{ end }}'>
-          {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
-          <!--{{ block "breadcrumbs" . }}{{ partial "breadcrumbs.html" . }}{{end}}-->
+    <div id="container">
+      <div class="main-row">
+ 
 
+        {{ block "left-sidebar" . }}
+        <div id="left">
+          {{ partial "left-sidebar.html" . }}
+        </div>
+        {{ end }}
+
+
+        <div id="main">
+          {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
           {{ block "main" . }}{{ end }}
           {{ block "article-footer" . }}{{ end }}
         </div>
-        
+
         {{ block "right-sidebar" . }}
-        <div class="col-sm-2 right-side">
-          {{ partial "right-sidebar.html" . }}
+        <div id="right">
         </div>
         {{ end }}
+
       </div>
-      <div class="row footer bg-light">
-        {{ block "footer" . }}
-        <div class="container footer-content">
-          {{ partial "footer.html" . }}
-        </div>
-        {{ end }}
-      </div>
+
     </div>
+    <div id="footer" class="bg-light">
+      {{ block "footer" . }}
+      <div class="footer-content">
+        {{ block "breadcrumbs" . }}{{ partial "breadcrumbs.html" . }}{{end}}
+        {{ partial "footer.html" . }}
+      </div>
+      {{ end }}
+    </div>
+
 
     <script>
       document.querySelector(".navbar-toggler").addEventListener("click", function(){
-        document.getElementById("navbarNav").classList.toggle("collapse");
+        document.getElementById("content-navigation").classList.toggle("show");
       })
     </script>
     {{ block "script" . }}{{ end }}
